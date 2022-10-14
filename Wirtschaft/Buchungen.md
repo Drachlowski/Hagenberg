@@ -238,3 +238,21 @@ Im ganzen Kalenderjahr werden Handeswaren auf die Aufwandskonten gebucht. Am End
 
 ----
 
+<br><br>
+
+# Beispiel 4.4 - Privatkonten
+
+
+### 1. S 12 Privatentnahme von Waren � 89,--
+
+### 9600 Privat / 4900 Eigenverbrauch 89,--
+
+----
+
+
+### 2. B 455 Privateinlage auf das Bankkonto 1000,--
+
+### 2800 Bank / 9600 Privat 1000, --
+
+----
+

@@ -9,7 +9,7 @@ TEMPLATE = '''
 '''
 
 while True:
-    with open('Wirtschaft.md', 'a+') as FILE:
+    with open('Buchungen.md', 'a+') as FILE:
 
         print("Beispiel:")
         BEISPIEL = input()
