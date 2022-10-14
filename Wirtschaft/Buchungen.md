@@ -256,3 +256,126 @@ Im ganzen Kalenderjahr werden Handeswaren auf die Aufwandskonten gebucht. Am End
 
 ----
 
+<br><br>
+
+# Beispiel 5.1 - GeschÃ¤ftsfÃ¤lle ohne UST
+
+
+### 1. B567: Wir überweisen die Feuerversicherung 238,--
+
+### 7700 Versicherungsaufwand / 2800 Bank 238,--
+
+----
+
+
+### 2. A 44: Verkauf von Handelswaren auf Ziel 13.900,--
+
+### 2000 LF / 4000 HW-Erlöse 13.900,--
+
+----
+
+
+### 3. B 568: Bankabhebung für die Geschäftskasse 1.000,--
+
+### 2700 Kassa / 2800 Bank 1.000,--
+
+----
+
+
+### B 569: Ausgleich einer Lieferverbindlichkeit durch Banküberweisung 389,--
+
+### 3300 / 2800 389,--
+
+----
+
+
+### 5. K 32: Kauf von Büromaterial Bar 127,--
+
+### 7600 / 2700 127,--
+
+----
+
+
+### 6. B 570: Abbuchung der Telefongebühr vom Bankkonto 90,--
+
+### 7380 / 2800 90,--
+
+----
+
+
+### 7. B 571: Die Bank verrechnet Zinsen für einen Kredit 259,20
+
+### 8280 / 2800 259,20
+
+----
+
+
+### 8. B 572: Mieteingang auf das Bankkonto 459,--
+
+### 2800 / 4810 459,--
+
+----
+
+
+### 9. E 122: Erhalt der Rechnung für die Reparatur des Faxgerätes 97,--
+
+### 7200 / 3300 97,--
+
+----
+
+
+### 10. B 573: Ein Kunde bezahlt eine Rechnung durch Banküberweisung 1970,--
+
+### 2800 / 2000 1970,--
+
+----
+
+
+### 11. B 574: Rückzahlung eines Darlehns an den Darlehensgeber (Sparkassa Linz) durch Banküberweisung 15.000,--
+
+### 3150 / 2800 15.000,--
+
+----
+
+
+### 12. B 575: Die Bank belastet uns mit Spesen 45,10
+
+### 7790 / 2800 45,10
+
+----
+
+
+### 13. A 45: Verkauf von Handelswaren gegen spätere Bezahlung 938,--
+
+### 2000 / 4000 938,--
+
+----
+
+
+### 14. B 576: Bankeingang von einem Kunden 658,--
+
+### 2800 / 2000 658,--
+
+----
+
+
+### Custom: S21: Privatentnahme aus der Kassa: 1000,--
+
+### 9600 / 2700 1000,--
+
+----
+
+
+### Custom: S22: Der Unternehmer entnimmt waren für seinen Privaten Haushalt um 500,--
+
+### 9600 / 4900 500,--
+
+----
+
+
+### Custom S23: Der Unternehmer legt 200,-- in die Kassa
+
+### 2700 / 9600 200,--
+
+----
+
