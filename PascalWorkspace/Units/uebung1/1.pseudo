@@ -1,0 +1,21 @@
+AccountCalculator()
+
+BEGIN
+
+  revenue     := 0
+  expenditure := 0
+
+  Read(input)
+  WHILE value = 0
+    IF input > 0 THEN revenue     := revenue      + input
+    ELSE              expenditure := expenditure  + input
+    Read(input) 
+  END -- while
+
+  sum := revenue + expenditure
+Write('Einnahmen: ', revenue)
+Write('Ausgaben: ', expenditure)
+Write('Gesamt: ', sum)
+
+END -- BEGIN
+    
