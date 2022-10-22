@@ -2,7 +2,7 @@ PROGRAM MedianCalc;
 
 
 // Algorithm to get the Median of three integers
-// It covers all combinations of integers, a sorting algorithm is not needed, always the median will be delivered.ö
+// It covers all combinations of integers, a sorting algorithm is not needed, always the median will be delivered.
 FUNCTION Median (a, b, c : INTEGER): INTEGER;
 BEGIN
     IF ( (b <= a) AND ( a <= c) ) OR ( (c <= a) AND (a <= b) ) THEN BEGIN
@@ -18,15 +18,10 @@ BEGIN
     Median := c;
 END;
 
-// PROCEDURE Median (a, b, c : INTEGER; VAR OUTPUT : INTEGER);
-// BEGIN
-//     IF ( (a <= b) AND (b <= c) ) OR ( (c <= b) AND (b <= a)) THEN
-//         OUTPUT := b
-//     ELSE IF ( (b <= a) AND ( a <= c) ) OR ( (c <= a) AND (a <= b) ) THEN
-//         OUTPUT := a( (b <= a) AND ( a <= c) ) OR ( (c <= a) AND (a <= b) )
-//     ELSE OUTPUT := c;
-// END;
 
+// Procedure to test the function median
+// The input will be a, b, c and the expected value
+// The Output Format is ( a, b, c ) => <Value for expectation> - <OK / FAILED> (got <value from function>)
 PROCEDURE Test (a, b, c, EXPECTATION : INTEGER);
 VAR
     output : INTEGER;
@@ -78,4 +73,19 @@ BEGIN
     WriteLn('Test a very large and small numbers');
     Test(32767, 0, 0, 0);
     Test(-32768, 0, 0, 0);
+
+    // These testcases will not comile, because you will get
+    // an overflow and underflow, because the datatype integer
+    // can only support values between -32768 and 32767
+    // -32768 is the minimum, 32767 the maximum
+    // Test(32768, 0, 0, 0);
+    // Test(-32769, 0, 0, 0);
+
+    // These testcases will not comile, because the read datatype is
+    // a character or string
+
+    // WriteLn;
+    // WriteLn('Test letters');
+    // Test('ad', 0, 0, 0);
+    // Test('b', 0, 0, 0);
 END.
