@@ -5,6 +5,7 @@ CONST
   FactorMinutesToSeconds = 60;
   FactorHoursToSeconds = 3600;
   MinimumHours = 0;
+  InvalidValue = -1;
 
 
 TYPE
@@ -16,8 +17,9 @@ TYPE
   END;
 
 FUNCTION ValidateTimeSpan (timeSpan : TimeSpan): BOOLEAN;
-VAR
-  validInput : BOOLEAN;
+  VAR
+    validInput : BOOLEAN;
+
 BEGIN
 
   validInput := TRUE;
@@ -38,7 +40,10 @@ END;
 
 FUNCTION TimeSpanToSeconds (timeSpan : TimeSpan) : INT64;
 BEGIN
-  TimeSpanToSeconds := timeSpan.hours * FactorHoursToSeconds + TimeSpan.minutes * FactorMinutesToSeconds + TimeSpan.seconds;
+  IF ValidateTimeSpan(timeSpan) THEN
+    TimeSpanToSeconds := timeSpan.hours * FactorHoursToSeconds + TimeSpan.minutes * FactorMinutesToSeconds + TimeSpan.seconds
+  ELSE 
+    TimeSpanToSeconds := InvalidValue;
 END;
 
 
@@ -68,29 +73,66 @@ BEGIN
   totalSecondsForTimeSpan1 := TimeSpanToSeconds(timeSpan1);
   totalSecondsForTimeSpan2 := TimeSpanToSeconds(timeSpan2);
 
-  IF totalSecondsForTimeSpan1 >= totalSecondsForTimeSpan2 THEN
-    TimeDifference := totalSecondsForTimeSpan1 - totalSecondsForTimeSpan2
-  ELSE
-    TimeDifference := totalSecondsForTimeSpan2 - totalSecondsForTimeSpan1;
+  IF (totalSecondsForTimeSpan1 <> InvalidValue) AND (totalSecondsForTimeSpan2 <> InvalidValue) THEN BEGIN
+    IF totalSecondsForTimeSpan1 >= totalSecondsForTimeSpan2 THEN
+      TimeDifference := totalSecondsForTimeSpan1 - totalSecondsForTimeSpan2
+    ELSE
+      TimeDifference := totalSecondsForTimeSpan2 - totalSecondsForTimeSpan1;
+  END
+  ELSE TimeDifference := InvalidValue;
+
 END;
 
 
+PROCEDURE ReadTimeSpan (VAR outputTimeSpan : TimeSpan);
+BEGIN
+  Write('Hours: ');
+  ReadLn(outputTimeSpan.hours);
+  Write('Minutes: ');
+  ReadLn(outputTimeSpan.minutes);
+  Write('Seconds: ');
+  ReadLn(outputTimeSpan.seconds);
+  WriteLn;
+END;
 
+
+PROCEDURE OutputTestCase (original, backConverted : TimeSpan; seconds : INT64);
+BEGIN
+  WriteLn('Hours: Original: ', original.hours, ' : BackConverted: ', backConverted.hours);
+  WriteLn('Minutes: Original: ', original.minutes, ' : BackConverted: ', backConverted.minutes);
+  WriteLn('Seconds: Original: ', original.seconds, ' : BackConverted: ', backConverted.seconds);
+  WriteLn('Total Seconds: ', seconds);
+END;
 
 
 VAR
-  test : TimeSpan;
   test1 : TimeSpan;
-  totalSeconds : INT64;
+  test2 : TimeSpan;
+  totalSeconds1 : INT64;
+  totalSeconds2 : INT64;
+  test1BackConverted : TimeSpan;
+  test2BackConverted : TimeSpan;
+  totalSeconds  : INT64;
 
 BEGIN
+  // Code zum Aufrufen der Prozeduren
+  WriteLn('1. Timespan:');
+  ReadTimeSpan(test1);
+  totalSeconds1 := TimeSpanToSeconds(test1);
+  test1BackConverted := SecondsToTimeSpan(totalSeconds1);
 
-  test.hours := 10;
-  test.minutes := 1;
-  test.seconds := 59;
-  test1.hours := 10;
-  test1.minutes := 2;
-  test1.seconds := 5;
+  WriteLn('2. Timespan:');
+  ReadTimeSpan(test2);
+  totalSeconds2 := TimeSpanToSeconds(test2);
+  test2BackConverted := SecondsToTimeSpan(totalSeconds2);
 
-  WriteLn(TimeDifference(test, test1))
+  totalSeconds := TimeDifference(test1, test2);
+  WriteLn;
+  WriteLn('Timedifference: ', totalSeconds, ' Seconds');
+  WriteLn('1. Timespan:');
+  OutputTestCase(test1, test1BackConverted, totalSeconds1);
+  WriteLn;
+  WriteLn('2. Timespan:');
+  OutputTestCase(test2, test2BackConverted, totalSeconds2);
+
 END.

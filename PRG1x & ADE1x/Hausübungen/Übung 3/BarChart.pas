@@ -1,25 +1,24 @@
 PROGRAM CreateBarChart;
 
 CONST
-  MaximumBars = 40;
-  BarItemWidth = 2;
-  PipeCharacter = '|';
-  EmptyString = '';
-  TrailBegin = '+';
-  MinusCharacter = '-'
-  SpaceCharacter = ' ';
+  PipeCharacter   = '|';
+  EmptyString     = '';
+  TrailBegin      = '+';
+  MinusCharacter  = '-';
+  SpaceCharacter  = ' ';
+
 
 TYPE
-  BarValue = 1..10;
-  BarChartData = ARRAY[1..MaximumBars] OF BarValue;
+  BarValue      = 1..10;
+  BarRange      = 1..40;
+  BarChartData  = ARRAY[BarRange] OF BarValue;
 
 
 // amountOfData represents n
 FUNCTION LineIsRequired (lineNumber, amountOfData : INTEGER; data : BarChartData) : BOOLEAN;
-VAR
-  isRequired  : BOOLEAN;
-  i           : INTEGER;
-
+  VAR
+    isRequired  : BOOLEAN;
+    i           : INTEGER;
 BEGIN
   isRequired := FALSE;
 
@@ -33,9 +32,8 @@ END;
 
 
 PROCEDURE PrintChartLine (lineNumber, amountOfData : INTEGER; data : BarChartData; character : CHAR; yIndexWidth, barItemWidth : INTEGER);
-VAR
-  i : INTEGER;
-
+  VAR
+    i : INTEGER;
 BEGIN
   Write(lineNumber : yIndexWidth, PipeCharacter);
 
@@ -50,9 +48,8 @@ END;
 
 
 PROCEDURE PrintChartTail (amountOfData : INTEGER; data : BarChartData; yIndexWidth, barItemWidth : INTEGER);
-VAR
-  columnsToPrint, i : INTEGER;
-
+  VAR
+    columnsToPrint, i : INTEGER;
 BEGIN
   columnsToPrint := amountOfData * barItemWidth;
   Write(EmptyString : yIndexWidth, TrailBegin);
@@ -66,13 +63,12 @@ END;
 
 
 
-PROCEDURE BarChar (ch: CHAR; n : INTEGER; data : BarChartData);
-VAR
-  i : INTEGER;
-  j : INTEGER;
-  lineRequired : BOOLEAN;
-  yIndexWidth : INTEGER;
-  barItemWidth : INTEGER;
+PROCEDURE BarChart (ch: CHAR; n : INTEGER; data : BarChartData);
+  VAR
+    i : INTEGER;
+    lineRequired : BOOLEAN;
+    yIndexWidth : INTEGER;
+    barItemWidth : INTEGER;
 BEGIN
   yIndexWidth := 1;
 
@@ -87,19 +83,44 @@ BEGIN
   PrintChartTail(n, data, yIndexWidth, barItemWidth);
 END;
 
-VAR
-  test : BarChartData;
+
+
+PROCEDURE ReadData (VAR character : CHAR; VAR amountOfData : INTEGER; VAR data : BarChartData);
+  VAR
+    i : INTEGER;
+    inputData : INTEGER;
 BEGIN
-  test[1] := 1;
-  test[2] := 2;
-  test[3] := 3;
-  test[4] := 4;
-  test[5] := 5;
-  test[6] := 6;
-  test[7] := 7;
-  test[8] := 8;
-  test[9] := 9;
-  test[10] := 10;
-  test[11] := 8;
-  BarChar('a', 11, test);
+  Write('ch: ');
+  Read(character);
+
+  Write('n: ');
+  ReadLn(amountOfData);
+
+  IF (Low(BarRange) <= amountOfData) AND (amountOfData <= High(BarRange)) THEN BEGIN
+    i := Low(data);
+
+    WHILE (i <= amountOfData) DO BEGIN
+      Write('data item ', i, ': ');
+      ReadLn(inputData);
+      IF (inputData < Low(BarValue)) OR (High(BarValue) < inputData) 
+        THEN amountOfData := 0
+      ELSE 
+        data[i] := inputData;
+      Inc(i);
+    END;
+  END 
+  ELSE amountOfData := 0;
+
+END;
+
+
+VAR
+  data, test : BarChartData;
+  character : CHAR;
+  amountOfData : INTEGER;
+BEGIN
+  ReadData(character, amountOfData, data);
+  WriteLn;
+  IF amountOfData = 0 THEN WriteLn('Invalid input!')
+  ELSE BarChart(character, amountOfData, data);
 END.
