@@ -5,13 +5,15 @@ CONST
 
 FUNCTION SubstringIsNextIndexes (s, substr : STRING; startPosition : INTEGER) : BOOLEAN;
   VAR
-    i       : INTEGER;
-    result  : BOOLEAN;
+    i        : INTEGER;
+    result   : BOOLEAN;
     position : INTEGER;
 BEGIN
   result := FALSE;
 
-  FOR i := stringStartIndex TO Length(substr) DO BEGIN
+  i := stringStartIndex;
+
+  WHILE i <= Length(substr) DO BEGIN
     position := startPosition + i - 1;
 
     IF (s[position] <> substr[i]) OR (position > Length(s)) 
@@ -22,6 +24,8 @@ BEGIN
 
     IF (i = Length(substr)) AND (s[position] = substr[i]) 
       THEN result := TRUE;
+    
+    Inc(i);
   END;
 
   SubstringIsNextIndexes := result;
@@ -31,22 +35,20 @@ END;
 
 FUNCTION DeleteSubstring (s, substr : STRING) : STRING;
   VAR
-    newString   : STRING;
-    start_index : INTEGER;
-    end_index   : INTEGER;
-    lastIndexToCheck : INTEGER;
-    i           : INTEGER;
+    newString         : STRING;
+    i                 : INTEGER;
 BEGIN
   newString         := '';
-  // lastIndexToCheck  := Length(s) - Length(substr) + 1;
-  
-  FOR i := stringStartIndex TO Length(s) DO BEGIN
 
+  i := stringStartIndex;
+
+  WHILE i <= Length(s) DO BEGIN
     IF (SubstringIsNextIndexes(s, substr, i)) THEN i := i + Length(substr) - 1
-
     ELSE newString := newString + s[i];
 
+    Inc(i);
   END;
+  
   DeleteSubstring := newString;
 END;
 

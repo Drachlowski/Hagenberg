@@ -1,195 +1,151 @@
-Testcase : Bet on even numbers:
-Games lost: 21596
-Games won : 20596
-Max. money: 1000
--------------------------------
-Testcase : Bet on random lucky numbers:
-Games lost: 7090
-Games won : 174
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 0:
-Games lost: 41005
-Games won : 1143
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 1:
-Games lost: 18185
-Games won : 491
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 2:
-Games lost: 57770
-Games won : 1622
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 3:
-Games lost: 113455
-Games won : 3213
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 4:
-Games lost: 12620
-Games won : 332
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 5:
-Games lost: 22875
-Games won : 625
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 6:
-Games lost: 22560
-Games won : 616
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 7:
-Games lost: 7405
-Games won : 183
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 8:
-Games lost: 50070
-Games won : 1402
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 9:
-Games lost: 37575
-Games won : 1045
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 10:
-Games lost: 3555
-Games won : 73
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 11:
-Games lost: 98020
-Games won : 2772
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 12:
-Games lost: 23435
-Games won : 641
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 13:
-Games lost: 19165
-Games won : 519
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 14:
-Games lost: 4990
-Games won : 114
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 15:
-Games lost: 83390
-Games won : 2354
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 16:
-Games lost: 49790
-Games won : 1394
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 17:
-Games lost: 100435
-Games won : 2841
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 18:
-Games lost: 25115
-Games won : 689
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 19:
-Games lost: 7230
-Games won : 178
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 20:
-Games lost: 140965
-Games won : 3999
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 21:
-Games lost: 86750
-Games won : 2450
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 22:
-Games lost: 16820
-Games won : 452
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 23:
-Games lost: 54235
-Games won : 1521
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 24:
-Games lost: 12970
-Games won : 342
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 25:
-Games lost: 23680
-Games won : 648
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 26:
-Games lost: 11605
-Games won : 303
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 27:
-Games lost: 29210
-Games won : 806
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 28:
-Games lost: 32815
-Games won : 909
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 29:
-Games lost: 36525
-Games won : 1015
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 30:
-Games lost: 47165
-Games won : 1319
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 31:
-Games lost: 74150
-Games won : 2090
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 32:
-Games lost: 16505
-Games won : 443
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 33:
-Games lost: 151115
-Games won : 4289
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 34:
-Games lost: 19585
-Games won : 531
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 35:
-Games lost: 16785
-Games won : 451
-Max. money: 1000
----------------------------------------
-Testcase : Bet on lucky number 36:
-Games lost: 27915
-Games won : 769
-Max. money: 1000
----------------------------------------
+Normaler Testfall (L├ñnge von a3 = 3)
+A1:
+n: 6
+Items in field:
+1, 2, 3, 5, 8, 13
+
+A2:
+n: 5
+Items in field:
+1, 3, 5, 7, 9
+
+Result:
+n: 2
+Items in field:
+1, 3
+---------------------------------------------
+├£berlauf von A3
+A1:
+n: 6
+Items in field:
+1, 2, 3, 5, 8, 13
+
+A2:
+n: 5
+Items in field:
+1, 3, 5, 7, 9
+
+Result:
+n: 2
+Items in field:
+1, 3
+---------------------------------------------
+Unsortiertes A1
+A1:
+n: 6
+Items in field:
+1, 2, 11, 5, 8, 13
+
+A2:
+n: 5
+Items in field:
+1, 3, 5, 7, 9
+
+Result:
+n: -1
+Items in field:
+
+
+---------------------------------------------
+Unsortiertes A1 und A2
+A1:
+n: 6
+Items in field:
+1, 2, 11, 5, 8, 13
+
+A2:
+n: 5
+Items in field:
+1, 3, 100, 7, 9
+
+Result:
+n: -1
+Items in field:
+
+
+---------------------------------------------
+Unsortiertes A2
+A1:
+n: 6
+Items in field:
+1, 2, 3, 5, 8, 13
+
+A2:
+n: 5
+Items in field:
+1, 3, 100, 7, 9
+
+Result:
+n: -1
+Items in field:
+
+
+---------------------------------------------
+Array A3 ohne items
+A1:
+n: 6
+Items in field:
+1, 2, 3, 5, 8, 13
+
+A2:
+n: 5
+Items in field:
+1, 3, 5, 7, 9
+
+Result:
+n: -1
+Items in field:
+
+
+---------------------------------------------
+Array A1 ohne items
+A1:
+n: 0
+Items in field:
+
+
+A2:
+n: 5
+Items in field:
+1, 3, 5, 7, 9
+
+Result:
+n: 0
+Items in field:
+
+
+---------------------------------------------
+Array A2 ohne items
+A1:
+n: 5
+Items in field:
+1, 3, 5, 7, 9
+
+A2:
+n: 0
+Items in field:
+
+
+Result:
+n: 0
+Items in field:
+
+
+---------------------------------------------
+Array A1 und A2 ohne items
+A1:
+n: 5
+Items in field:
+1, 3, 5, 7, 9
+
+A2:
+n: 0
+Items in field:
+
+
+Result:
+n: 0
+Items in field:
+
+
+---------------------------------------------

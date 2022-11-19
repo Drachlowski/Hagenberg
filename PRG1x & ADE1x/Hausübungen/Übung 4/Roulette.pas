@@ -29,7 +29,6 @@ FUNCTION BenefitForLuckyNr (luckyNr, bet: INTEGER) : INTEGER;
   VAR
     win           : INTEGER;
     randomNumber  : INTEGER;
-    i             : INTEGER;
 BEGIN
 
   // Get a random number between 0 and 36
@@ -71,7 +70,6 @@ PROCEDURE Test (luckyNrMode : INTEGER);
     gamesWon  : LONGINT;
     maxMoney  : LONGINT;
     win       : INTEGER;
-    luckyNr   : INTEGER;
 BEGIN
   budget    := 1000;
   gamesLost := 0;
